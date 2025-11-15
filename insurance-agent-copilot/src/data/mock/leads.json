@@ -1,0 +1,124 @@
+[
+  {
+    "id": "lead-1",
+    "name": "Priya Sharma",
+    "age": 34,
+    "email": "priya.sharma@example.com",
+    "phone": "+91-9876543211",
+    "location": "Mumbai, Maharashtra",
+    "address": "123 MG Road, Andheri, Mumbai",
+    "temperature": "hot",
+    "tags": [
+      "high-value",
+      "interested",
+      "follow-up"
+    ],
+    "productInterest": [
+      "Term Life",
+      "Health"
+    ],
+    "premium": 25000,
+    "conversionProbability": 78,
+    "lastInteractionSummary": "Discussed term life policy options. Very interested in 1 crore coverage.",
+    "lastInteractionDate": "2024-11-13T10:30:00Z",
+    "assignedTo": "user-1",
+    "lat": 19.076,
+    "lng": 72.8777
+  },
+  {
+    "id": "lead-2",
+    "name": "Amit Patel",
+    "age": 42,
+    "email": "amit.patel@example.com",
+    "phone": "+91-9876543212",
+    "location": "Pune, Maharashtra",
+    "address": "456 FC Road, Shivajinagar, Pune",
+    "temperature": "warm",
+    "tags": [
+      "renewal-due",
+      "existing-customer"
+    ],
+    "productInterest": [
+      "Health",
+      "Investment"
+    ],
+    "premium": 18000,
+    "policyNumber": "POL-2023-001",
+    "conversionProbability": 62,
+    "lastInteractionSummary": "Policy renewal discussion. Considering upgrading health coverage.",
+    "lastInteractionDate": "2024-11-10T14:20:00Z",
+    "assignedTo": "user-1",
+    "lat": 18.5204,
+    "lng": 73.8567
+  },
+  {
+    "id": "lead-3",
+    "name": "Sneha Reddy",
+    "age": 29,
+    "email": "sneha.reddy@example.com",
+    "phone": "+91-9876543213",
+    "location": "Bangalore, Karnataka",
+    "address": "789 Indiranagar, Bangalore",
+    "temperature": "cold",
+    "tags": [
+      "new-lead",
+      "price-sensitive"
+    ],
+    "productInterest": [
+      "Term Life"
+    ],
+    "premium": 12000,
+    "conversionProbability": 35,
+    "lastInteractionSummary": "Initial contact. Requested quotes but concerned about premium costs.",
+    "lastInteractionDate": "2024-11-08T09:15:00Z",
+    "assignedTo": "user-2",
+    "lat": 12.9716,
+    "lng": 77.5946
+  },
+  {
+    "id": "lead-4",
+    "name": "Rahul Mehta",
+    "age": 38,
+    "email": "rahul.mehta@example.com",
+    "phone": "+91-9876543214",
+    "location": "Delhi, NCR",
+    "address": "321 Connaught Place, New Delhi",
+    "temperature": "hot",
+    "tags": [
+      "high-value",
+      "urgent",
+      "family-plan"
+    ],
+    "productInterest": [
+      "Term Life",
+      "Health",
+      "Child Education"
+    ],
+    "premium": 45000,
+    "conversionProbability": 85,
+    "lastInteractionSummary": "Ready to purchase comprehensive family plan. Needs proposal by tomorrow.",
+    "lastInteractionDate": "2024-11-13T16:45:00Z",
+    "assignedTo": "user-1",
+    "lat": 28.6139,
+    "lng": 77.209
+  },
+  {
+    "id": "lead-1763193741",
+    "name": "aakash",
+    "phone": "5600954",
+    "email": "",
+    "location": "",
+    "address": "",
+    "age": null,
+    "temperature": "cold",
+    "tags": [
+      "new-lead"
+    ],
+    "productInterest": [],
+    "premium": 0,
+    "conversionProbability": 0,
+    "lastInteractionSummary": "New lead created",
+    "lastInteractionDate": "2025-11-15T13:32:21.683752",
+    "assignedTo": "user-1"
+  }
+]

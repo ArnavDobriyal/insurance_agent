@@ -1,0 +1,38 @@
+[
+  {
+    "id": "tmpl-1",
+    "name": "Policy Renewal Reminder",
+    "category": "Renewal",
+    "content": "Hi {{name}}, your policy {{policyNumber}} is due for renewal on {{dueDate}}. Premium: ₹{{premium}}. Reply YES to renew.",
+    "channel": "whatsapp",
+    "dynamicFields": ["name", "policyNumber", "dueDate", "premium"],
+    "isApproved": true
+  },
+  {
+    "id": "tmpl-2",
+    "name": "Follow-up After Quote",
+    "category": "Follow-up",
+    "content": "Hi {{name}}, thank you for your interest in our {{productType}} plan. I've sent the quote to your email. Let me know if you have any questions!",
+    "channel": "whatsapp",
+    "dynamicFields": ["name", "productType"],
+    "isApproved": true
+  },
+  {
+    "id": "tmpl-3",
+    "name": "Welcome New Lead",
+    "category": "Onboarding",
+    "content": "Welcome {{name}}! I'm {{agentName}}, your insurance advisor. I'm here to help you find the right coverage for your needs. When would be a good time to discuss?",
+    "channel": "sms",
+    "dynamicFields": ["name", "agentName"],
+    "isApproved": true
+  },
+  {
+    "id": "tmpl-4",
+    "name": "Document Request",
+    "category": "Documentation",
+    "content": "Hi {{name}}, to proceed with your {{productType}} application, please share: 1) ID proof 2) Address proof 3) Income proof. You can upload via our secure portal.",
+    "channel": "email",
+    "dynamicFields": ["name", "productType"],
+    "isApproved": true
+  }
+]

@@ -1,0 +1,46 @@
+[
+  {
+    "id": "int-1",
+    "leadId": "lead-1",
+    "userId": "user-1",
+    "type": "call",
+    "summary": "Customer interested in term life insurance with 1 crore coverage",
+    "transcript": "Agent: Hello Priya, this is Rajesh from XYZ Insurance...",
+    "sentiment": 0.7,
+    "duration": 420,
+    "createdAt": "2024-11-13T10:30:00Z"
+  },
+  {
+    "id": "int-2",
+    "leadId": "lead-2",
+    "userId": "user-1",
+    "type": "message",
+    "summary": "Sent renewal reminder and upgrade options",
+    "transcript": null,
+    "sentiment": 0.5,
+    "duration": null,
+    "createdAt": "2024-11-10T14:20:00Z"
+  },
+  {
+    "id": "int-3",
+    "leadId": "lead-3",
+    "userId": "user-2",
+    "type": "email",
+    "summary": "Sent term life quotes with different coverage options",
+    "transcript": null,
+    "sentiment": 0.3,
+    "duration": null,
+    "createdAt": "2024-11-08T09:15:00Z"
+  },
+  {
+    "id": "int-4",
+    "leadId": "lead-4",
+    "userId": "user-1",
+    "type": "meeting",
+    "summary": "In-person meeting to discuss comprehensive family insurance plan",
+    "transcript": "Discussed term life, health, and child education plans...",
+    "sentiment": 0.9,
+    "duration": 1800,
+    "createdAt": "2024-11-13T16:45:00Z"
+  }
+]

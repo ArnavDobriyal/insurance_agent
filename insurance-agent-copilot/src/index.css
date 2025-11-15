@@ -1,0 +1,88 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  body {
+    @apply font-sans;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+
+  .dark body {
+    @apply bg-dark-bg text-gray-300;
+  }
+
+  .light body {
+    @apply bg-neutral-bg text-neutral-body;
+  }
+
+  .dark h1, .dark h2, .dark h3, .dark h4, .dark h5, .dark h6 {
+    @apply text-white font-heading;
+  }
+
+  .light h1, .light h2, .light h3, .light h4, .light h5, .light h6 {
+    @apply text-neutral-heading font-heading;
+  }
+}
+
+@layer utilities {
+  .glow-focus {
+    @apply focus:ring-2 focus:ring-primary-glow focus:ring-opacity-50 transition-shadow duration-200;
+  }
+
+  .card-lift {
+    @apply hover:transform hover:-translate-y-1 transition-transform duration-200;
+  }
+
+  /* Dark mode glass effect */
+  .dark .glass-effect {
+    @apply bg-dark-card/80 backdrop-blur-xl border border-dark-border;
+  }
+
+  /* Light mode glass effect */
+  .light .glass-effect {
+    @apply bg-white/80 backdrop-blur-xl border border-gray-200;
+  }
+
+  /* Dark mode backgrounds */
+  .dark .bg-page {
+    @apply bg-dark-bg;
+  }
+
+  /* Light mode backgrounds */
+  .light .bg-page {
+    @apply bg-neutral-bg;
+  }
+
+  /* Dark mode text colors */
+  .dark .text-primary-content {
+    @apply text-white;
+  }
+
+  .dark .text-secondary-content {
+    @apply text-gray-400;
+  }
+
+  /* Light mode text colors */
+  .light .text-primary-content {
+    @apply text-neutral-heading;
+  }
+
+  .light .text-secondary-content {
+    @apply text-neutral-body;
+  }
+
+  .scrollbar-hide::-webkit-scrollbar {
+    display: none;
+  }
+
+  .scrollbar-hide {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+  }
+
+  .safe-area-bottom {
+    padding-bottom: env(safe-area-inset-bottom);
+  }
+}

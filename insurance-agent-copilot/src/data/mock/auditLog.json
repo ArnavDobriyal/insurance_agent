@@ -1,0 +1,58 @@
+[
+  {
+    "id": "audit-1",
+    "userId": "user-1",
+    "actionType": "update_lead",
+    "entityType": "lead",
+    "entityId": "lead-1",
+    "changes": {"temperature": "hot"},
+    "source": "autopilot",
+    "aiConfidence": 85,
+    "aiReasoning": "Recent positive interaction with high engagement",
+    "userDecision": "applied",
+    "complianceStatus": "safe",
+    "createdAt": "2024-11-13T11:00:00Z"
+  },
+  {
+    "id": "audit-2",
+    "userId": "user-1",
+    "actionType": "send_message",
+    "entityType": "interaction",
+    "entityId": "int-2",
+    "changes": {"templateId": "tmpl-1"},
+    "source": "manual",
+    "aiConfidence": null,
+    "aiReasoning": null,
+    "userDecision": "applied",
+    "complianceStatus": "safe",
+    "createdAt": "2024-11-10T14:20:00Z"
+  },
+  {
+    "id": "audit-3",
+    "userId": "user-2",
+    "actionType": "create_lead",
+    "entityType": "lead",
+    "entityId": "lead-3",
+    "changes": {"source": "ocr"},
+    "source": "ai",
+    "aiConfidence": 92,
+    "aiReasoning": "Extracted from visiting card with high OCR confidence",
+    "userDecision": "applied",
+    "complianceStatus": "safe",
+    "createdAt": "2024-11-08T09:00:00Z"
+  },
+  {
+    "id": "audit-4",
+    "userId": "user-1",
+    "actionType": "update_lead",
+    "entityType": "lead",
+    "entityId": "lead-4",
+    "changes": {"tags": ["urgent"]},
+    "source": "autopilot",
+    "aiConfidence": 78,
+    "aiReasoning": "Customer requested proposal by tomorrow",
+    "userDecision": "edited",
+    "complianceStatus": "safe",
+    "createdAt": "2024-11-13T17:00:00Z"
+  }
+]
