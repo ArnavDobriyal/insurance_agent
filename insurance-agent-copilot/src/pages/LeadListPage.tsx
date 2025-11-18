@@ -127,7 +127,7 @@ export default function LeadListPage() {
         <div className="flex items-center justify-between mb-4">
           <div className="flex items-center gap-2">
             <button
-              onClick={() => navigate('/')}
+              onClick={() => navigate('/home')}
               className="w-8 h-8 rounded-full glass-effect flex items-center justify-center hover:border-primary/50 transition-all"
             >
               <ArrowLeft className="w-4 h-4 text-gray-400" />

@@ -1,23 +1,69 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { useNavigate, useParams } from 'react-router-dom';
-import { ArrowLeft, Phone, MessageCircle, Mail, MapPin, Calendar, Tag, Zap, Users, IndianRupee, TrendingUp, Clock, Target } from 'lucide-react';
+import { ArrowLeft, Phone, MessageCircle, Mail, MapPin, Calendar, Tag, Zap, Target } from 'lucide-react';
 import { motion } from 'framer-motion';
 import SentimentGraph from '../components/SentimentGraph';
 import ConversionGauge from '../components/ConversionGauge';
 import CommunicationHub from '../components/CommunicationHub';
 import CallPopup from '../components/CallPopup';
 import BottomNavigation from '../components/BottomNavigation';
+import ProductAssignment from '../components/ProductAssignment';
 import leadsData from '../data/mock/leads_enhanced.json';
 import interactionsData from '../data/mock/interactions.json';
+import { messageService, NewMessage } from '../services/messageService';
+
+// Expose message service globally for testing
+if (typeof window !== 'undefined') {
+  (window as any).messageService = messageService;
+  (window as any).simulateMessage = (leadId: string, content: string, type = 'whatsapp') => {
+    return messageService.simulateNewMessage(leadId, content, type);
+  };
+}
 
 export default function LeadProfilePage() {
   const navigate = useNavigate();
   const { id } = useParams();
   const [activeTab, setActiveTab] = useState<'timeline' | 'insights'>('timeline');
   const [showCallPopup, setShowCallPopup] = useState(false);
+  const [newMessages, setNewMessages] = useState<NewMessage[]>([]);
+  const [interactions, setInteractions] = useState(interactionsData.filter(i => i.leadId === id));
 
   const lead = leadsData.find(l => l.id === id);
-  const leadInteractions = interactionsData.filter(i => i.leadId === id);
+
+  // Listen for new messages
+  useEffect(() => {
+    if (!id) return;
+
+    const handleNewMessage = (message: NewMessage) => {
+      if (message.leadId === id) {
+        setNewMessages(prev => [...prev, message]);
+        // Add to interactions
+        const newInteraction = {
+          id: message.id,
+          leadId: message.leadId,
+          type: message.type,
+          summary: message.content,
+          createdAt: message.timestamp,
+          isNew: true
+        };
+        setInteractions(prev => [newInteraction, ...prev]);
+      }
+    };
+
+    messageService.addMessageListener(handleNewMessage);
+    
+    return () => {
+      messageService.removeMessageListener(handleNewMessage);
+    };
+  }, [id]);
+
+  // Check for new messages on component mount
+  useEffect(() => {
+    if (id) {
+      const existingNewMessages = messageService.getNewMessages(id);
+      setNewMessages(existingNewMessages);
+    }
+  }, [id]);
 
   if (!lead) {
     return (
@@ -161,7 +207,7 @@ export default function LeadProfilePage() {
                   </button>
                   <button 
                     onClick={() => {
-                      navigate(`/ai?action=analyze&leadId=${lead.id}&leadName=${encodeURIComponent(lead.name)}&leadInfo=${encodeURIComponent(JSON.stringify({
+                      const aiParams = {
                         age: lead.age,
                         location: lead.location,
                         productInterest: lead.productInterest,
@@ -171,13 +217,22 @@ export default function LeadProfilePage() {
                         aiPriority: (lead as any).aiPriority,
                         sentiment: (lead as any).sentiment,
                         enrichment: (lead as any).enrichment,
-                        engagement: (lead as any).engagement
-                      }))}`);
+                        engagement: (lead as any).engagement,
+                        newMessages: newMessages.length > 0 ? newMessages : undefined,
+                        hasNewMessages: newMessages.length > 0
+                      };
+                      
+                      navigate(`/ai?action=analyze&leadId=${lead.id}&leadName=${encodeURIComponent(lead.name)}&leadInfo=${encodeURIComponent(JSON.stringify(aiParams))}&newMessageCount=${newMessages.length}`);
                     }}
-                    className="flex flex-col items-center gap-1.5 p-2 rounded-xl hover:bg-dark-hover transition-colors"
+                    className="flex flex-col items-center gap-1.5 p-2 rounded-xl hover:bg-dark-hover transition-colors relative"
                   >
                     <div className="w-10 h-10 rounded-full bg-purple-500/20 flex items-center justify-center">
                       <Zap className="w-5 h-5 text-purple-400" />
+                      {newMessages.length > 0 && (
+                        <div className="absolute -top-1 -right-1 w-4 h-4 bg-red-500 rounded-full flex items-center justify-center">
+                          <span className="text-white text-[8px] font-bold">{newMessages.length}</span>
+                        </div>
+                      )}
                     </div>
                     <span className="text-[10px] text-gray-400">AI</span>
                   </button>
@@ -311,119 +366,18 @@ export default function LeadProfilePage() {
                   </div>
                 </div>
 
-                {/* Product Assignment Dropdown */}
-                <div className="mb-4">
-                  <label className="text-xs text-secondary-content mb-2 block">Assign Products</label>
-                  <select className="w-full glass-effect rounded-lg px-3 py-2 text-xs text-primary-content outline-none focus:ring-2 focus:ring-primary/50">
-                    <option value="">Select a product to assign...</option>
-                    <optgroup label="Endowment Plans">
-                      <option value="LIC's Bima Lakshmi">LIC's Bima Lakshmi (512N389V01)</option>
-                    </optgroup>
-                    <optgroup label="Whole Life Plans">
-                      <option value="LIC's Jeevan Umang">LIC's Jeevan Umang (512N312V03)</option>
-                    </optgroup>
-                    <optgroup label="Money Back Plans">
-                      <option value="LIC's Bima Ratna">LIC's Bima Ratna (512N345V02)</option>
-                    </optgroup>
-                    <optgroup label="Term Insurance">
-                      <option value="LIC's Digi Term">LIC's Digi Term (512N356V02)</option>
-                      <option value="LIC's Digi Credit Life">LIC's Digi Credit Life (512N358V01)</option>
-                    </optgroup>
-                  </select>
-                </div>
-
-                {/* Key Attributes Grid */}
-                {(lead as any).enrichment && (
-                  <div className="grid grid-cols-2 gap-3 pt-3 border-t border-dark-border">
-                    <div>
-                      <div className="text-[10px] text-secondary-content mb-0.5">Income</div>
-                      <div className="text-primary-content text-sm">₹{((lead as any).enrichment.income / 100000).toFixed(1)}L</div>
-                    </div>
-                    <div>
-                      <div className="text-[10px] text-secondary-content mb-0.5">Dependents</div>
-                      <div className="text-primary-content text-sm">{(lead as any).enrichment.dependents}</div>
-                    </div>
-                    <div>
-                      <div className="text-[10px] text-secondary-content mb-0.5">Age</div>
-                      <div className="text-primary-content text-sm">{lead.age} years</div>
-                    </div>
-                    <div>
-                      <div className="text-[10px] text-secondary-content mb-0.5">Source</div>
-                      <div className="text-primary-content text-sm">{(lead as any).enrichment?.source || 'Unknown'}</div>
-                    </div>
-                    <div>
-                      <div className="text-[10px] text-secondary-content mb-0.5">Prior Policies</div>
-                      <div className="text-primary-content text-sm">{(lead as any).enrichment?.existingPolicies?.length || 0}</div>
-                    </div>
-                    <div>
-                      <div className="text-[10px] text-secondary-content mb-0.5">Last Touch Point</div>
-                      <div className="text-primary-content text-sm">{formatDate(lead.lastInteractionDate).split(',')[0]}</div>
-                    </div>
-                  </div>
-                )}
+                {/* Enhanced Product Assignment */}
+                <ProductAssignment 
+                  leadId={lead.id}
+                  currentProducts={lead.productInterest || []}
+                  onProductsUpdate={(products) => {
+                    // Update lead's product interests
+                    console.log('Products updated:', products);
+                  }}
+                />
               </div>
 
-              {/* Financial Profile */}
-              {(lead as any).enrichment && (
-                <div className="glass-effect rounded-xl p-4">
-                  <h3 className="text-primary-content font-medium mb-3 text-sm">Financial Profile</h3>
-                  <div className="grid grid-cols-2 gap-4">
-                    <div className="flex items-center gap-2">
-                      <IndianRupee className="w-4 h-4 text-green-400" />
-                      <div>
-                        <div className="text-xs text-secondary-content">Annual Income</div>
-                        <div className="text-sm font-medium text-primary-content">
-                          ₹{((lead as any).enrichment.income / 100000).toFixed(1)}L
-                        </div>
-                      </div>
-                    </div>
-                    <div className="flex items-center gap-2">
-                      <Users className="w-4 h-4 text-blue-400" />
-                      <div>
-                        <div className="text-xs text-secondary-content">Dependents</div>
-                        <div className="text-sm font-medium text-primary-content">
-                          {(lead as any).enrichment.dependents}
-                        </div>
-                      </div>
-                    </div>
-                    <div className="flex items-center gap-2">
-                      <TrendingUp className="w-4 h-4 text-purple-400" />
-                      <div>
-                        <div className="text-xs text-secondary-content">Risk Profile</div>
-                        <div className="text-sm font-medium text-primary-content capitalize">
-                          {(lead as any).enrichment.riskProfile}
-                        </div>
-                      </div>
-                    </div>
-                    <div className="flex items-center gap-2">
-                      <Tag className="w-4 h-4 text-orange-400" />
-                      <div>
-                        <div className="text-xs text-secondary-content">Source</div>
-                        <div className="text-sm font-medium text-primary-content">
-                          {(lead as any).enrichment.source}
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                  
-                  {/* Product Interest */}
-                  {(lead as any).productInterest && (lead as any).productInterest.length > 0 && (
-                    <div className="mt-4 pt-3 border-t border-dark-border">
-                      <div className="text-xs text-secondary-content mb-2">Products of Interest</div>
-                      <div className="flex flex-wrap gap-2">
-                        {(lead as any).productInterest.map((product: string, index: number) => (
-                          <span
-                            key={index}
-                            className="px-3 py-1 bg-primary/20 text-primary rounded-full text-xs"
-                          >
-                            {product}
-                          </span>
-                        ))}
-                      </div>
-                    </div>
-                  )}
-                </div>
-              )}
+
 
               {/* Communication Hub */}
               <div data-communication-hub>
@@ -431,6 +385,8 @@ export default function LeadProfilePage() {
                   leadName={lead.name}
                   leadPhone={lead.phone}
                   leadEmail={lead.email}
+                  lastInteraction={lead.lastInteractionSummary}
+                  productInterest={lead.productInterest}
                   aiSuggestion={(lead as any).aiSuggestions?.nextBestAction}
                 />
               </div>
@@ -474,22 +430,61 @@ export default function LeadProfilePage() {
                 <div className="p-4">
                   {activeTab === 'timeline' && (
                     <div className="space-y-3">
-                      {leadInteractions.length > 0 ? (
-                        leadInteractions.map((interaction) => (
+                      {/* New Message Alert */}
+                      {newMessages.length > 0 && (
+                        <div className="bg-green-500/10 border border-green-500/20 rounded-lg p-3 mb-4">
+                          <div className="flex items-center gap-2 mb-2">
+                            <div className="w-2 h-2 bg-green-400 rounded-full animate-pulse"></div>
+                            <span className="text-green-400 font-medium text-xs">
+                              {newMessages.length} New Message{newMessages.length > 1 ? 's' : ''}
+                            </span>
+                          </div>
+                          <p className="text-xs text-secondary-content">
+                            Latest: "{newMessages[newMessages.length - 1]?.content.substring(0, 50)}..."
+                          </p>
+                          <button
+                            onClick={() => {
+                              navigate(`/ai?action=analyze&leadId=${id}&leadName=${encodeURIComponent(lead?.name || '')}&newMessage=${encodeURIComponent(newMessages[newMessages.length - 1]?.content || '')}&messageType=${newMessages[newMessages.length - 1]?.type}`);
+                            }}
+                            className="text-xs text-green-400 hover:underline mt-1"
+                          >
+                            Analyze with AI →
+                          </button>
+                        </div>
+                      )}
+
+                      {interactions.length > 0 ? (
+                        interactions.map((interaction) => (
                           <motion.div
                             key={interaction.id}
                             initial={{ opacity: 0, x: -20 }}
                             animate={{ opacity: 1, x: 0 }}
-                            className="flex gap-4"
+                            className={`flex gap-4 ${(interaction as any).isNew ? 'bg-green-500/5 rounded-lg p-2 border border-green-500/20' : ''}`}
                           >
                             <div className="flex-shrink-0">
-                              <div className="w-8 h-8 rounded-full bg-primary/20 flex items-center justify-center text-primary">
+                              <div className={`w-8 h-8 rounded-full flex items-center justify-center ${
+                                (interaction as any).isNew 
+                                  ? 'bg-green-500/20 text-green-400' 
+                                  : 'bg-primary/20 text-primary'
+                              }`}>
                                 {getInteractionIcon(interaction.type)}
+                                {(interaction as any).isNew && (
+                                  <div className="absolute -top-1 -right-1 w-3 h-3 bg-green-400 rounded-full flex items-center justify-center">
+                                    <span className="text-white text-[8px] font-bold">!</span>
+                                  </div>
+                                )}
                               </div>
                             </div>
                             <div className="flex-1">
                               <div className="flex items-start justify-between mb-1">
-                                <h4 className="text-primary-content font-medium capitalize text-xs">{interaction.type}</h4>
+                                <div className="flex items-center gap-2">
+                                  <h4 className="text-primary-content font-medium capitalize text-xs">{interaction.type}</h4>
+                                  {(interaction as any).isNew && (
+                                    <span className="px-1.5 py-0.5 bg-green-500/20 text-green-400 rounded-full text-[8px] font-medium">
+                                      NEW
+                                    </span>
+                                  )}
+                                </div>
                                 <span className="text-[10px] text-gray-500">
                                   {formatDate(interaction.createdAt)}
                                 </span>

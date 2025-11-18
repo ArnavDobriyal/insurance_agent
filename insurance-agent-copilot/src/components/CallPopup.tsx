@@ -10,7 +10,9 @@ interface CallPopupProps {
   nextBestAction?: {
     action: string;
     timing: string;
-    reasoning: string;
+    confidence?: number;
+    urgency?: string;
+    reasoning?: string;
   };
 }
 

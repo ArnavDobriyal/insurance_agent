@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import { motion } from 'framer-motion';
-import { User, MapPin, Tag, Phone, MessageCircle, Mail, TrendingUp, TrendingDown, Minus, Clock, Users, IndianRupee, Zap } from 'lucide-react';
+import { User, MapPin, Phone, MessageCircle, Mail, TrendingUp, TrendingDown, Minus, Zap } from 'lucide-react';
 import CallPopup from './CallPopup';
 
 interface Lead {
@@ -107,39 +107,7 @@ export default function LeadCard({ lead, onClick }: LeadCardProps) {
     }
   };
 
-  const getUrgencyColor = (urgency?: string) => {
-    switch (urgency) {
-      case 'critical':
-        return 'bg-red-500 animate-pulse';
-      case 'high':
-        return 'bg-orange-500';
-      case 'medium':
-        return 'bg-yellow-500';
-      default:
-        return 'bg-green-500';
-    }
-  };
 
-  const getActionIcon = (action?: string) => {
-    switch (action) {
-      case 'call':
-        return <Phone size={12} />;
-      case 'whatsapp':
-        return <MessageCircle size={12} />;
-      case 'email':
-        return <Mail size={12} />;
-      default:
-        return <Clock size={12} />;
-    }
-  };
-
-  const formatIncome = (income?: number) => {
-    if (!income) return '';
-    if (income >= 1000000) {
-      return `₹${(income / 1000000).toFixed(1)}L`;
-    }
-    return `₹${(income / 100000).toFixed(0)}L`;
-  };
 
   const formatDate = (dateString: string) => {
     const date = new Date(dateString);
@@ -286,7 +254,7 @@ export default function LeadCard({ lead, onClick }: LeadCardProps) {
             <button 
               onClick={(e) => { 
                 e.stopPropagation(); 
-                const address = encodeURIComponent(lead.address || lead.location || '');
+                const address = encodeURIComponent((lead as any).address || lead.location || '');
                 window.open(`https://www.google.com/maps/search/?api=1&query=${address}`, '_blank');
               }}
               className="glass-effect rounded-lg px-2 py-1.5 flex items-center justify-center gap-1 text-xs text-orange-400 hover:border-orange-400/50 transition-all"
@@ -324,7 +292,7 @@ export default function LeadCard({ lead, onClick }: LeadCardProps) {
         isOpen={showCallPopup}
         onClose={() => setShowCallPopup(false)}
         leadName={lead.name}
-        leadPhone={lead.phone || ''}
+        leadPhone={(lead as any).phone || ''}
         nextBestAction={lead.aiSuggestions?.nextBestAction}
       />
     </motion.div>

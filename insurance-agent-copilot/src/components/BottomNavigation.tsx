@@ -7,7 +7,7 @@ interface BottomNavigationProps {
 }
 
 const navItems = [
-  { id: 'home', label: 'Home', icon: Home, route: '/', isExternal: false },
+  { id: 'home', label: 'Home', icon: Home, route: '/home', isExternal: false },
   { id: 'ai', label: 'AI', icon: Sparkles, route: '/ai', isExternal: false },
   { id: 'leads', label: 'Leads', icon: Users, route: '/leads', isExternal: false },
   { id: 'tasks', label: 'Tasks', icon: CheckSquare, route: '/tasks', isExternal: false },

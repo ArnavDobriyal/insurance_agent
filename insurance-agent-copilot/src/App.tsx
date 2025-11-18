@@ -23,7 +23,8 @@ function App() {
         <Route path="/login" element={<LoginPage />} />
         
         {/* Protected Routes */}
-        <Route path="/" element={
+        <Route path="/" element={<Navigate to="/ai" replace />} />
+        <Route path="/home" element={
           <ProtectedRoute>
             <HomePage />
           </ProtectedRoute>
@@ -55,7 +56,7 @@ function App() {
         } />
         
         {/* Redirect to login if not authenticated */}
-        <Route path="*" element={<Navigate to={isLoggedIn ? "/" : "/login"} replace />} />
+        <Route path="*" element={<Navigate to={isLoggedIn ? "/ai" : "/login"} replace />} />
       </Routes>
     </ThemeProvider>
   )

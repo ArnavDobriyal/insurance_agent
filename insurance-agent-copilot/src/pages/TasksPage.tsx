@@ -178,7 +178,7 @@ export default function TasksPage() {
         {/* Header */}
         <div className="flex items-center gap-3 mb-4">
           <button
-            onClick={() => navigate('/')}
+            onClick={() => navigate('/home')}
             className="w-10 h-10 rounded-full glass-effect flex items-center justify-center hover:border-primary/50 transition-all"
           >
             <ArrowLeft className="w-5 h-5 text-gray-400" />

@@ -26,8 +26,8 @@ export default function LoginPage() {
       localStorage.setItem('isLoggedIn', 'true');
       localStorage.setItem('userEmail', email);
       
-      // Navigate to home
-      navigate('/');
+      // Navigate to AI page (new default)
+      navigate('/ai');
     }, 800);
   };
 

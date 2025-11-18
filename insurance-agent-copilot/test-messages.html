@@ -1,0 +1,229 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Message Testing Interface</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+            background: #1a1a1a;
+            color: white;
+        }
+        .container {
+            background: #2a2a2a;
+            padding: 20px;
+            border-radius: 10px;
+            margin-bottom: 20px;
+        }
+        input, select, textarea {
+            width: 100%;
+            padding: 10px;
+            margin: 5px 0;
+            border: 1px solid #444;
+            border-radius: 5px;
+            background: #333;
+            color: white;
+        }
+        button {
+            background: #007bff;
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            margin: 5px;
+        }
+        button:hover {
+            background: #0056b3;
+        }
+        .success {
+            background: #28a745;
+            padding: 10px;
+            border-radius: 5px;
+            margin: 10px 0;
+        }
+        .error {
+            background: #dc3545;
+            padding: 10px;
+            border-radius: 5px;
+            margin: 10px 0;
+        }
+        .message-log {
+            background: #1a1a1a;
+            padding: 15px;
+            border-radius: 5px;
+            max-height: 300px;
+            overflow-y: auto;
+            font-family: monospace;
+        }
+    </style>
+</head>
+<body>
+    <h1>Insurance Agent Message Testing Interface</h1>
+    
+    <div class="container">
+        <h2>Send Test Message</h2>
+        <form id="messageForm">
+            <label>Lead ID:</label>
+            <select id="leadId">
+                <option value="lead-1">Priya Sharma (lead-1)</option>
+                <option value="lead-2">Rajesh Kumar (lead-2)</option>
+                <option value="lead-3">Anita Singh (lead-3)</option>
+            </select>
+            
+            <label>Message Type:</label>
+            <select id="messageType">
+                <option value="whatsapp">WhatsApp</option>
+                <option value="email">Email</option>
+                <option value="sms">SMS</option>
+            </select>
+            
+            <label>Message Content:</label>
+            <textarea id="messageContent" rows="3" placeholder="Enter your test message here..."></textarea>
+            
+            <button type="submit">Send Message</button>
+            <button type="button" onclick="sendQuickMessage()">Send Quick Test</button>
+        </form>
+        
+        <div id="result"></div>
+    </div>
+    
+    <div class="container">
+        <h2>Quick Test Messages</h2>
+        <button onclick="sendSample('interest')">Insurance Interest</button>
+        <button onclick="sendSample('quote')">Quote Request</button>
+        <button onclick="sendSample('callback')">Callback Request</button>
+        <button onclick="sendSample('complaint')">Complaint</button>
+    </div>
+    
+    <div class="container">
+        <h2>Message Log</h2>
+        <div id="messageLog" class="message-log">
+            <div>Ready to send test messages...</div>
+        </div>
+        <button onclick="clearLog()">Clear Log</button>
+    </div>
+
+    <div class="container">
+        <h2>Instructions</h2>
+        <ol>
+            <li>Make sure your React app is running on localhost:3000</li>
+            <li>Navigate to a lead profile page (e.g., /leads/lead-1)</li>
+            <li>Use this interface to send test messages</li>
+            <li>Watch the timeline update in real-time</li>
+            <li>Click the AI button to see message context</li>
+            <li>Use Communication Hub to generate AI drafts</li>
+        </ol>
+        
+        <h3>API Endpoints:</h3>
+        <ul>
+            <li><strong>POST</strong> http://localhost:5001/api/messages/receive</li>
+            <li><strong>GET</strong> http://localhost:5001/api/messages/{leadId}</li>
+            <li><strong>POST</strong> http://localhost:5001/api/ai/drafts</li>
+        </ul>
+    </div>
+
+    <script>
+        const API_BASE = 'http://localhost:5001/api';
+        
+        const sampleMessages = {
+            interest: "Hi, I'm interested in term life insurance. Can you help me understand the options?",
+            quote: "Please send me a quote for ₹1 crore term insurance. I'm 35 years old.",
+            callback: "I missed your call. Please call me back regarding the insurance policy.",
+            complaint: "I'm not satisfied with the service. The agent hasn't responded to my queries."
+        };
+        
+        function logMessage(message, type = 'info') {
+            const log = document.getElementById('messageLog');
+            const timestamp = new Date().toLocaleTimeString();
+            const className = type === 'error' ? 'error' : type === 'success' ? 'success' : '';
+            log.innerHTML += `<div class="${className}">[${timestamp}] ${message}</div>`;
+            log.scrollTop = log.scrollHeight;
+        }
+        
+        function clearLog() {
+            document.getElementById('messageLog').innerHTML = '<div>Log cleared...</div>';
+        }
+        
+        async function sendMessage(leadId, content, type) {
+            try {
+                logMessage(`Sending ${type} message to ${leadId}...`);
+                
+                const response = await fetch(`${API_BASE}/messages/receive`, {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                    body: JSON.stringify({
+                        leadId: leadId,
+                        content: content,
+                        type: type
+                    })
+                });
+                
+                const result = await response.json();
+                
+                if (result.success) {
+                    logMessage(`✅ Message sent successfully! ID: ${result.message.id}`, 'success');
+                    logMessage(`📝 Content: "${content}"`);
+                    
+                    if (result.aiDrafts && result.aiDrafts.length > 0) {
+                        logMessage(`🤖 Generated ${result.aiDrafts.length} AI draft responses`);
+                    }
+                    
+                    document.getElementById('result').innerHTML = 
+                        '<div class="success">Message sent successfully! Check the lead profile page for updates.</div>';
+                } else {
+                    throw new Error(result.error || 'Unknown error');
+                }
+                
+            } catch (error) {
+                logMessage(`❌ Error: ${error.message}`, 'error');
+                document.getElementById('result').innerHTML = 
+                    `<div class="error">Error: ${error.message}</div>`;
+            }
+        }
+        
+        function sendSample(type) {
+            const leadId = document.getElementById('leadId').value;
+            const content = sampleMessages[type];
+            const messageType = 'whatsapp';
+            
+            sendMessage(leadId, content, messageType);
+        }
+        
+        function sendQuickMessage() {
+            const leadId = document.getElementById('leadId').value;
+            const content = "This is a quick test message from the testing interface.";
+            const messageType = document.getElementById('messageType').value;
+            
+            sendMessage(leadId, content, messageType);
+        }
+        
+        document.getElementById('messageForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            const leadId = document.getElementById('leadId').value;
+            const content = document.getElementById('messageContent').value;
+            const messageType = document.getElementById('messageType').value;
+            
+            if (!content.trim()) {
+                alert('Please enter a message content');
+                return;
+            }
+            
+            sendMessage(leadId, content, messageType);
+        });
+        
+        // Test connection on load
+        window.addEventListener('load', function() {
+            logMessage('Message testing interface loaded');
+            logMessage('Make sure the backend API is running on port 5001');
+        });
+    </script>
+</body>
+</html>

@@ -117,7 +117,7 @@ export default function MapsPage() {
       <div className="glass-effect border-b border-dark-border px-4 py-3 flex items-center justify-between z-10">
         <div className="flex items-center gap-3">
           <button
-            onClick={() => navigate('/')}
+            onClick={() => navigate('/home')}
             className="w-8 h-8 rounded-full glass-effect flex items-center justify-center hover:border-primary/50 transition-all"
           >
             <ArrowLeft className="w-4 h-4 text-secondary-content" />
