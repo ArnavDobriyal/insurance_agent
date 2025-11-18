@@ -15,7 +15,7 @@ CORS(app)
 # Load Whisper model (base model - good balance of speed and accuracy)
 # Options: tiny, base, small, medium, large
 print("Loading Whisper model...")
-model = whisper.load_model("base")
+model = whisper.load_model("base", download_root="~/.cache/whisper")
 print("✅ Whisper model loaded!")
 
 @app.route('/health', methods=['GET'])

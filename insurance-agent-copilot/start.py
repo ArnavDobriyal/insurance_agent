@@ -10,6 +10,8 @@ import os
 import time
 import signal
 from pathlib import Path
+import platform
+import shutil
 
 # Colors for terminal output
 class Colors:
@@ -162,7 +164,13 @@ def main():
                 print_error(install_process.stderr)
                 return
             print_success("Dependencies installed")
-        
+        if platform.system() == "Windows":
+            npm_executable = shutil.which("npm.cmd")
+        else:
+            npm_executable = shutil.which("npm")
+        if npm_executable is None:
+            print_error("npm executable not found. Please install Node.js and ensure npm is in PATH.")
+            return
         frontend_process = subprocess.Popen(
             ["npm", "run", "dev"],
             stdout=subprocess.PIPE,
