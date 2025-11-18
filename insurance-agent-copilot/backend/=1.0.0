@@ -1,0 +1,338 @@
+Collecting crewai
+  Downloading crewai-1.5.0-py3-none-any.whl.metadata (36 kB)
+Collecting crewai-tools
+  Downloading crewai_tools-1.5.0-py3-none-any.whl.metadata (11 kB)
+Requirement already satisfied: appdirs>=1.4.4 in /home/arnab/anaconda3/lib/python3.13/site-packages (from crewai) (1.4.4)
+Collecting chromadb~=1.1.0 (from crewai)
+  Downloading chromadb-1.1.1-cp39-abi3-manylinux_2_17_x86_64.manylinux2014_x86_64.whl.metadata (7.2 kB)
+Requirement already satisfied: click>=8.1.7 in /home/arnab/anaconda3/lib/python3.13/site-packages (from crewai) (8.1.8)
+Collecting instructor>=1.3.3 (from crewai)
+  Downloading instructor-1.13.0-py3-none-any.whl.metadata (11 kB)
+Collecting json-repair==0.25.2 (from crewai)
+  Downloading json_repair-0.25.2-py3-none-any.whl.metadata (7.9 kB)
+Collecting json5>=0.10.0 (from crewai)
+  Using cached json5-0.12.1-py3-none-any.whl.metadata (36 kB)
+Collecting jsonref>=1.1.0 (from crewai)
+  Downloading jsonref-1.1.0-py3-none-any.whl.metadata (2.7 kB)
+Collecting mcp>=1.16.0 (from crewai)
+  Downloading mcp-1.21.2-py3-none-any.whl.metadata (85 kB)
+Requirement already satisfied: openai>=1.13.3 in /home/arnab/anaconda3/lib/python3.13/site-packages (from crewai) (2.6.1)
+Requirement already satisfied: openpyxl>=3.1.5 in /home/arnab/anaconda3/lib/python3.13/site-packages (from crewai) (3.1.5)
+Requirement already satisfied: opentelemetry-api>=1.30.0 in /home/arnab/anaconda3/lib/python3.13/site-packages (from crewai) (1.37.0)
+Requirement already satisfied: opentelemetry-exporter-otlp-proto-http>=1.30.0 in /home/arnab/anaconda3/lib/python3.13/site-packages (from crewai) (1.37.0)
+Requirement already satisfied: opentelemetry-sdk>=1.30.0 in /home/arnab/anaconda3/lib/python3.13/site-packages (from crewai) (1.37.0)
+Requirement already satisfied: pdfplumber>=0.11.4 in /home/arnab/anaconda3/lib/python3.13/site-packages (from crewai) (0.11.8)
+Collecting portalocker==2.7.0 (from crewai)
+  Downloading portalocker-2.7.0-py2.py3-none-any.whl.metadata (6.8 kB)
+Collecting pydantic-settings>=2.10.1 (from crewai)
+  Downloading pydantic_settings-2.12.0-py3-none-any.whl.metadata (3.4 kB)
+Requirement already satisfied: pydantic>=2.11.9 in /home/arnab/anaconda3/lib/python3.13/site-packages (from crewai) (2.12.4)
+Requirement already satisfied: pyjwt>=2.9.0 in /home/arnab/anaconda3/lib/python3.13/site-packages (from crewai) (2.10.1)
+Collecting python-dotenv>=1.1.1 (from crewai)
+  Downloading python_dotenv-1.2.1-py3-none-any.whl.metadata (25 kB)
+Requirement already satisfied: regex>=2024.9.11 in /home/arnab/anaconda3/lib/python3.13/site-packages (from crewai) (2024.11.6)
+Requirement already satisfied: tokenizers>=0.20.3 in /home/arnab/anaconda3/lib/python3.13/site-packages (from crewai) (0.22.1)
+Collecting tomli-w>=1.1.0 (from crewai)
+  Downloading tomli_w-1.2.0-py3-none-any.whl.metadata (5.7 kB)
+Collecting tomli>=2.0.2 (from crewai)
+  Downloading tomli-2.3.0-cp313-cp313-manylinux2014_x86_64.manylinux_2_17_x86_64.manylinux_2_28_x86_64.whl.metadata (10 kB)
+Collecting uv>=0.4.25 (from crewai)
+  Downloading uv-0.9.10-py3-none-manylinux_2_17_x86_64.manylinux2014_x86_64.whl.metadata (11 kB)
+Collecting build>=1.0.3 (from chromadb~=1.1.0->crewai)
+  Using cached build-1.3.0-py3-none-any.whl.metadata (5.6 kB)
+Collecting pybase64>=1.4.1 (from chromadb~=1.1.0->crewai)
+  Downloading pybase64-1.4.2-cp313-cp313-manylinux1_x86_64.manylinux2014_x86_64.manylinux_2_17_x86_64.manylinux_2_5_x86_64.whl.metadata (8.7 kB)
+Requirement already satisfied: uvicorn>=0.18.3 in /home/arnab/anaconda3/lib/python3.13/site-packages (from uvicorn[standard]>=0.18.3->chromadb~=1.1.0->crewai) (0.38.0)
+Requirement already satisfied: numpy>=1.22.5 in /home/arnab/anaconda3/lib/python3.13/site-packages (from chromadb~=1.1.0->crewai) (2.1.3)
+Collecting posthog<6.0.0,>=2.4.0 (from chromadb~=1.1.0->crewai)
+  Downloading posthog-5.4.0-py3-none-any.whl.metadata (5.7 kB)
+Requirement already satisfied: typing-extensions>=4.5.0 in /home/arnab/anaconda3/lib/python3.13/site-packages (from chromadb~=1.1.0->crewai) (4.15.0)
+Collecting onnxruntime>=1.14.1 (from chromadb~=1.1.0->crewai)
+  Downloading onnxruntime-1.23.2-cp313-cp313-manylinux_2_27_x86_64.manylinux_2_28_x86_64.whl.metadata (5.1 kB)
+Collecting opentelemetry-exporter-otlp-proto-grpc>=1.2.0 (from chromadb~=1.1.0->crewai)
+  Downloading opentelemetry_exporter_otlp_proto_grpc-1.38.0-py3-none-any.whl.metadata (2.4 kB)
+Collecting pypika>=0.48.9 (from chromadb~=1.1.0->crewai)
+  Downloading PyPika-0.48.9.tar.gz (67 kB)
+  Installing build dependencies: started
+  Installing build dependencies: finished with status 'done'
+  Getting requirements to build wheel: started
+  Getting requirements to build wheel: finished with status 'done'
+  Preparing metadata (pyproject.toml): started
+  Preparing metadata (pyproject.toml): finished with status 'done'
+Requirement already satisfied: tqdm>=4.65.0 in /home/arnab/anaconda3/lib/python3.13/site-packages (from chromadb~=1.1.0->crewai) (4.67.1)
+Requirement already satisfied: overrides>=7.3.1 in /home/arnab/anaconda3/lib/python3.13/site-packages (from chromadb~=1.1.0->crewai) (7.4.0)
+Collecting importlib-resources (from chromadb~=1.1.0->crewai)
+  Using cached importlib_resources-6.5.2-py3-none-any.whl.metadata (3.9 kB)
+Requirement already satisfied: grpcio>=1.58.0 in /home/arnab/anaconda3/lib/python3.13/site-packages (from chromadb~=1.1.0->crewai) (1.74.0)
+Requirement already satisfied: bcrypt>=4.0.1 in /home/arnab/anaconda3/lib/python3.13/site-packages (from chromadb~=1.1.0->crewai) (4.3.0)
+Requirement already satisfied: typer>=0.9.0 in /home/arnab/anaconda3/lib/python3.13/site-packages (from chromadb~=1.1.0->crewai) (0.9.0)
+Collecting kubernetes>=28.1.0 (from chromadb~=1.1.0->crewai)
+  Downloading kubernetes-34.1.0-py2.py3-none-any.whl.metadata (1.7 kB)
+Requirement already satisfied: tenacity>=8.2.3 in /home/arnab/anaconda3/lib/python3.13/site-packages (from chromadb~=1.1.0->crewai) (9.1.2)
+Requirement already satisfied: pyyaml>=6.0.0 in /home/arnab/anaconda3/lib/python3.13/site-packages (from chromadb~=1.1.0->crewai) (6.0.2)
+Collecting mmh3>=4.0.1 (from chromadb~=1.1.0->crewai)
+  Downloading mmh3-5.2.0-cp313-cp313-manylinux1_x86_64.manylinux_2_28_x86_64.manylinux_2_5_x86_64.whl.metadata (14 kB)
+Requirement already satisfied: orjson>=3.9.12 in /home/arnab/anaconda3/lib/python3.13/site-packages (from chromadb~=1.1.0->crewai) (3.11.4)
+Requirement already satisfied: httpx>=0.27.0 in /home/arnab/anaconda3/lib/python3.13/site-packages (from chromadb~=1.1.0->crewai) (0.28.1)
+Requirement already satisfied: rich>=10.11.0 in /home/arnab/anaconda3/lib/python3.13/site-packages (from chromadb~=1.1.0->crewai) (13.9.4)
+Requirement already satisfied: jsonschema>=4.19.0 in /home/arnab/anaconda3/lib/python3.13/site-packages (from chromadb~=1.1.0->crewai) (4.23.0)
+Requirement already satisfied: requests<3.0,>=2.7 in /home/arnab/anaconda3/lib/python3.13/site-packages (from posthog<6.0.0,>=2.4.0->chromadb~=1.1.0->crewai) (2.32.5)
+Requirement already satisfied: six>=1.5 in /home/arnab/anaconda3/lib/python3.13/site-packages (from posthog<6.0.0,>=2.4.0->chromadb~=1.1.0->crewai) (1.17.0)
+Requirement already satisfied: python-dateutil>=2.2 in /home/arnab/anaconda3/lib/python3.13/site-packages (from posthog<6.0.0,>=2.4.0->chromadb~=1.1.0->crewai) (2.9.0.post0)
+Collecting backoff>=1.10.0 (from posthog<6.0.0,>=2.4.0->chromadb~=1.1.0->crewai)
+  Downloading backoff-2.2.1-py3-none-any.whl.metadata (14 kB)
+Requirement already satisfied: distro>=1.5.0 in /home/arnab/anaconda3/lib/python3.13/site-packages (from posthog<6.0.0,>=2.4.0->chromadb~=1.1.0->crewai) (1.9.0)
+Requirement already satisfied: charset_normalizer<4,>=2 in /home/arnab/anaconda3/lib/python3.13/site-packages (from requests<3.0,>=2.7->posthog<6.0.0,>=2.4.0->chromadb~=1.1.0->crewai) (3.3.2)
+Requirement already satisfied: idna<4,>=2.5 in /home/arnab/anaconda3/lib/python3.13/site-packages (from requests<3.0,>=2.7->posthog<6.0.0,>=2.4.0->chromadb~=1.1.0->crewai) (3.7)
+Requirement already satisfied: urllib3<3,>=1.21.1 in /home/arnab/anaconda3/lib/python3.13/site-packages (from requests<3.0,>=2.7->posthog<6.0.0,>=2.4.0->chromadb~=1.1.0->crewai) (2.3.0)
+Requirement already satisfied: certifi>=2017.4.17 in /home/arnab/anaconda3/lib/python3.13/site-packages (from requests<3.0,>=2.7->posthog<6.0.0,>=2.4.0->chromadb~=1.1.0->crewai) (2025.4.26)
+Collecting beautifulsoup4>=4.13.4 (from crewai-tools)
+  Using cached beautifulsoup4-4.14.2-py3-none-any.whl.metadata (3.8 kB)
+Collecting docker>=7.1.0 (from crewai-tools)
+  Downloading docker-7.1.0-py3-none-any.whl.metadata (3.8 kB)
+Collecting lancedb>=0.5.4 (from crewai-tools)
+  Downloading lancedb-0.25.3-cp39-abi3-manylinux_2_28_x86_64.whl.metadata (4.8 kB)
+Collecting pypdf>=5.9.0 (from crewai-tools)
+  Downloading pypdf-6.3.0-py3-none-any.whl.metadata (7.1 kB)
+Collecting python-docx>=1.2.0 (from crewai-tools)
+  Downloading python_docx-1.2.0-py3-none-any.whl.metadata (2.0 kB)
+Requirement already satisfied: pytube>=15.0.0 in /home/arnab/anaconda3/lib/python3.13/site-packages (from crewai-tools) (15.0.0)
+Requirement already satisfied: tiktoken>=0.8.0 in /home/arnab/anaconda3/lib/python3.13/site-packages (from crewai-tools) (0.12.0)
+Collecting youtube-transcript-api>=1.2.2 (from crewai-tools)
+  Downloading youtube_transcript_api-1.2.3-py3-none-any.whl.metadata (24 kB)
+Requirement already satisfied: soupsieve>1.2 in /home/arnab/anaconda3/lib/python3.13/site-packages (from beautifulsoup4>=4.13.4->crewai-tools) (2.5)
+Requirement already satisfied: packaging>=19.1 in /home/arnab/anaconda3/lib/python3.13/site-packages (from build>=1.0.3->chromadb~=1.1.0->crewai) (24.2)
+Collecting pyproject_hooks (from build>=1.0.3->chromadb~=1.1.0->crewai)
+  Using cached pyproject_hooks-1.2.0-py3-none-any.whl.metadata (1.3 kB)
+Requirement already satisfied: anyio in /home/arnab/anaconda3/lib/python3.13/site-packages (from httpx>=0.27.0->chromadb~=1.1.0->crewai) (4.10.0)
+Requirement already satisfied: httpcore==1.* in /home/arnab/anaconda3/lib/python3.13/site-packages (from httpx>=0.27.0->chromadb~=1.1.0->crewai) (1.0.9)
+Requirement already satisfied: h11>=0.16 in /home/arnab/anaconda3/lib/python3.13/site-packages (from httpcore==1.*->httpx>=0.27.0->chromadb~=1.1.0->crewai) (0.16.0)
+Requirement already satisfied: aiohttp<4.0.0,>=3.9.1 in /home/arnab/anaconda3/lib/python3.13/site-packages (from instructor>=1.3.3->crewai) (3.11.10)
+Collecting diskcache>=5.6.3 (from instructor>=1.3.3->crewai)
+  Downloading diskcache-5.6.3-py3-none-any.whl.metadata (20 kB)
+Requirement already satisfied: docstring-parser<1.0,>=0.16 in /home/arnab/anaconda3/lib/python3.13/site-packages (from instructor>=1.3.3->crewai) (0.17.0)
+Requirement already satisfied: jinja2<4.0.0,>=3.1.4 in /home/arnab/anaconda3/lib/python3.13/site-packages (from instructor>=1.3.3->crewai) (3.1.6)
+Requirement already satisfied: jiter<0.12,>=0.6.1 in /home/arnab/anaconda3/lib/python3.13/site-packages (from instructor>=1.3.3->crewai) (0.11.1)
+Collecting pre-commit>=4.3.0 (from instructor>=1.3.3->crewai)
+  Downloading pre_commit-4.4.0-py2.py3-none-any.whl.metadata (1.2 kB)
+Requirement already satisfied: pydantic-core<3.0.0,>=2.18.0 in /home/arnab/anaconda3/lib/python3.13/site-packages (from instructor>=1.3.3->crewai) (2.41.5)
+Collecting ty>=0.0.1a23 (from instructor>=1.3.3->crewai)
+  Downloading ty-0.0.1a26-py3-none-manylinux_2_17_x86_64.manylinux2014_x86_64.whl.metadata (4.7 kB)
+Requirement already satisfied: aiohappyeyeballs>=2.3.0 in /home/arnab/anaconda3/lib/python3.13/site-packages (from aiohttp<4.0.0,>=3.9.1->instructor>=1.3.3->crewai) (2.4.4)
+Requirement already satisfied: aiosignal>=1.1.2 in /home/arnab/anaconda3/lib/python3.13/site-packages (from aiohttp<4.0.0,>=3.9.1->instructor>=1.3.3->crewai) (1.2.0)
+Requirement already satisfied: attrs>=17.3.0 in /home/arnab/anaconda3/lib/python3.13/site-packages (from aiohttp<4.0.0,>=3.9.1->instructor>=1.3.3->crewai) (24.3.0)
+Requirement already satisfied: frozenlist>=1.1.1 in /home/arnab/anaconda3/lib/python3.13/site-packages (from aiohttp<4.0.0,>=3.9.1->instructor>=1.3.3->crewai) (1.5.0)
+Requirement already satisfied: multidict<7.0,>=4.5 in /home/arnab/anaconda3/lib/python3.13/site-packages (from aiohttp<4.0.0,>=3.9.1->instructor>=1.3.3->crewai) (6.1.0)
+Requirement already satisfied: propcache>=0.2.0 in /home/arnab/anaconda3/lib/python3.13/site-packages (from aiohttp<4.0.0,>=3.9.1->instructor>=1.3.3->crewai) (0.3.1)
+Requirement already satisfied: yarl<2.0,>=1.17.0 in /home/arnab/anaconda3/lib/python3.13/site-packages (from aiohttp<4.0.0,>=3.9.1->instructor>=1.3.3->crewai) (1.18.0)
+Requirement already satisfied: MarkupSafe>=2.0 in /home/arnab/anaconda3/lib/python3.13/site-packages (from jinja2<4.0.0,>=3.1.4->instructor>=1.3.3->crewai) (3.0.2)
+Requirement already satisfied: sniffio in /home/arnab/anaconda3/lib/python3.13/site-packages (from openai>=1.13.3->crewai) (1.3.0)
+Requirement already satisfied: annotated-types>=0.6.0 in /home/arnab/anaconda3/lib/python3.13/site-packages (from pydantic>=2.11.9->crewai) (0.6.0)
+Requirement already satisfied: typing-inspection>=0.4.2 in /home/arnab/anaconda3/lib/python3.13/site-packages (from pydantic>=2.11.9->crewai) (0.4.2)
+Requirement already satisfied: markdown-it-py>=2.2.0 in /home/arnab/anaconda3/lib/python3.13/site-packages (from rich>=10.11.0->chromadb~=1.1.0->crewai) (2.2.0)
+Requirement already satisfied: pygments<3.0.0,>=2.13.0 in /home/arnab/anaconda3/lib/python3.13/site-packages (from rich>=10.11.0->chromadb~=1.1.0->crewai) (2.19.1)
+Requirement already satisfied: jsonschema-specifications>=2023.03.6 in /home/arnab/anaconda3/lib/python3.13/site-packages (from jsonschema>=4.19.0->chromadb~=1.1.0->crewai) (2023.7.1)
+Requirement already satisfied: referencing>=0.28.4 in /home/arnab/anaconda3/lib/python3.13/site-packages (from jsonschema>=4.19.0->chromadb~=1.1.0->crewai) (0.30.2)
+Requirement already satisfied: rpds-py>=0.7.1 in /home/arnab/anaconda3/lib/python3.13/site-packages (from jsonschema>=4.19.0->chromadb~=1.1.0->crewai) (0.22.3)
+Requirement already satisfied: google-auth>=1.0.1 in /home/arnab/anaconda3/lib/python3.13/site-packages (from kubernetes>=28.1.0->chromadb~=1.1.0->crewai) (2.40.3)
+Requirement already satisfied: websocket-client!=0.40.0,!=0.41.*,!=0.42.*,>=0.32.0 in /home/arnab/anaconda3/lib/python3.13/site-packages (from kubernetes>=28.1.0->chromadb~=1.1.0->crewai) (1.8.0)
+Collecting requests-oauthlib (from kubernetes>=28.1.0->chromadb~=1.1.0->crewai)
+  Using cached requests_oauthlib-2.0.0-py2.py3-none-any.whl.metadata (11 kB)
+Collecting durationpy>=0.7 (from kubernetes>=28.1.0->chromadb~=1.1.0->crewai)
+  Downloading durationpy-0.10-py3-none-any.whl.metadata (340 bytes)
+Requirement already satisfied: cachetools<6.0,>=2.0.0 in /home/arnab/anaconda3/lib/python3.13/site-packages (from google-auth>=1.0.1->kubernetes>=28.1.0->chromadb~=1.1.0->crewai) (5.5.1)
+Requirement already satisfied: pyasn1-modules>=0.2.1 in /home/arnab/anaconda3/lib/python3.13/site-packages (from google-auth>=1.0.1->kubernetes>=28.1.0->chromadb~=1.1.0->crewai) (0.2.8)
+Requirement already satisfied: rsa<5,>=3.1.4 in /home/arnab/anaconda3/lib/python3.13/site-packages (from google-auth>=1.0.1->kubernetes>=28.1.0->chromadb~=1.1.0->crewai) (4.9.1)
+Requirement already satisfied: pyasn1>=0.1.3 in /home/arnab/anaconda3/lib/python3.13/site-packages (from rsa<5,>=3.1.4->google-auth>=1.0.1->kubernetes>=28.1.0->chromadb~=1.1.0->crewai) (0.4.8)
+Collecting deprecation (from lancedb>=0.5.4->crewai-tools)
+  Downloading deprecation-2.1.0-py2.py3-none-any.whl.metadata (4.6 kB)
+Requirement already satisfied: pyarrow>=16 in /home/arnab/anaconda3/lib/python3.13/site-packages (from lancedb>=0.5.4->crewai-tools) (19.0.0)
+Collecting lance-namespace>=0.0.16 (from lancedb>=0.5.4->crewai-tools)
+  Downloading lance_namespace-0.0.21-py3-none-any.whl.metadata (1.4 kB)
+Collecting lance-namespace-urllib3-client (from lance-namespace>=0.0.16->lancedb>=0.5.4->crewai-tools)
+  Downloading lance_namespace_urllib3_client-0.0.21-py3-none-any.whl.metadata (22 kB)
+Collecting pylance>=0.18.0 (from lance-namespace>=0.0.16->lancedb>=0.5.4->crewai-tools)
+  Downloading pylance-0.39.0-cp39-abi3-manylinux_2_28_x86_64.whl.metadata (2.1 kB)
+Requirement already satisfied: mdurl~=0.1 in /home/arnab/anaconda3/lib/python3.13/site-packages (from markdown-it-py>=2.2.0->rich>=10.11.0->chromadb~=1.1.0->crewai) (0.1.0)
+Requirement already satisfied: httpx-sse>=0.4 in /home/arnab/anaconda3/lib/python3.13/site-packages (from mcp>=1.16.0->crewai) (0.4.1)
+Requirement already satisfied: python-multipart>=0.0.9 in /home/arnab/anaconda3/lib/python3.13/site-packages (from mcp>=1.16.0->crewai) (0.0.12)
+Requirement already satisfied: sse-starlette>=1.6.1 in /home/arnab/anaconda3/lib/python3.13/site-packages (from mcp>=1.16.0->crewai) (3.0.2)
+Requirement already satisfied: starlette>=0.27 in /home/arnab/anaconda3/lib/python3.13/site-packages (from mcp>=1.16.0->crewai) (0.49.3)
+Collecting coloredlogs (from onnxruntime>=1.14.1->chromadb~=1.1.0->crewai)
+  Using cached coloredlogs-15.0.1-py2.py3-none-any.whl.metadata (12 kB)
+Collecting flatbuffers (from onnxruntime>=1.14.1->chromadb~=1.1.0->crewai)
+  Downloading flatbuffers-25.9.23-py2.py3-none-any.whl.metadata (875 bytes)
+Requirement already satisfied: protobuf in /home/arnab/anaconda3/lib/python3.13/site-packages (from onnxruntime>=1.14.1->chromadb~=1.1.0->crewai) (5.29.5)
+Requirement already satisfied: sympy in /home/arnab/anaconda3/lib/python3.13/site-packages (from onnxruntime>=1.14.1->chromadb~=1.1.0->crewai) (1.13.3)
+Requirement already satisfied: et-xmlfile in /home/arnab/anaconda3/lib/python3.13/site-packages (from openpyxl>=3.1.5->crewai) (1.1.0)
+Requirement already satisfied: importlib-metadata<8.8.0,>=6.0 in /home/arnab/anaconda3/lib/python3.13/site-packages (from opentelemetry-api>=1.30.0->crewai) (8.5.0)
+Requirement already satisfied: zipp>=3.20 in /home/arnab/anaconda3/lib/python3.13/site-packages (from importlib-metadata<8.8.0,>=6.0->opentelemetry-api>=1.30.0->crewai) (3.21.0)
+Requirement already satisfied: googleapis-common-protos~=1.57 in /home/arnab/anaconda3/lib/python3.13/site-packages (from opentelemetry-exporter-otlp-proto-grpc>=1.2.0->chromadb~=1.1.0->crewai) (1.70.0)
+Collecting opentelemetry-exporter-otlp-proto-common==1.38.0 (from opentelemetry-exporter-otlp-proto-grpc>=1.2.0->chromadb~=1.1.0->crewai)
+  Using cached opentelemetry_exporter_otlp_proto_common-1.38.0-py3-none-any.whl.metadata (1.8 kB)
+Collecting opentelemetry-proto==1.38.0 (from opentelemetry-exporter-otlp-proto-grpc>=1.2.0->chromadb~=1.1.0->crewai)
+  Using cached opentelemetry_proto-1.38.0-py3-none-any.whl.metadata (2.3 kB)
+Collecting opentelemetry-sdk>=1.30.0 (from crewai)
+  Downloading opentelemetry_sdk-1.38.0-py3-none-any.whl.metadata (1.5 kB)
+Collecting opentelemetry-api>=1.30.0 (from crewai)
+  Downloading opentelemetry_api-1.38.0-py3-none-any.whl.metadata (1.5 kB)
+Collecting opentelemetry-semantic-conventions==0.59b0 (from opentelemetry-sdk>=1.30.0->crewai)
+  Downloading opentelemetry_semantic_conventions-0.59b0-py3-none-any.whl.metadata (2.4 kB)
+INFO: pip is looking at multiple versions of opentelemetry-exporter-otlp-proto-http to determine which version is compatible with other requirements. This could take a while.
+Collecting opentelemetry-exporter-otlp-proto-http>=1.30.0 (from crewai)
+  Using cached opentelemetry_exporter_otlp_proto_http-1.38.0-py3-none-any.whl.metadata (2.3 kB)
+Requirement already satisfied: pdfminer.six==20251107 in /home/arnab/anaconda3/lib/python3.13/site-packages (from pdfplumber>=0.11.4->crewai) (20251107)
+Requirement already satisfied: Pillow>=9.1 in /home/arnab/anaconda3/lib/python3.13/site-packages (from pdfplumber>=0.11.4->crewai) (11.1.0)
+Requirement already satisfied: pypdfium2>=4.18.0 in /home/arnab/anaconda3/lib/python3.13/site-packages (from pdfplumber>=0.11.4->crewai) (5.0.0)
+Requirement already satisfied: cryptography>=36.0.0 in /home/arnab/anaconda3/lib/python3.13/site-packages (from pdfminer.six==20251107->pdfplumber>=0.11.4->crewai) (44.0.1)
+Requirement already satisfied: cffi>=1.12 in /home/arnab/anaconda3/lib/python3.13/site-packages (from cryptography>=36.0.0->pdfminer.six==20251107->pdfplumber>=0.11.4->crewai) (1.17.1)
+Requirement already satisfied: pycparser in /home/arnab/anaconda3/lib/python3.13/site-packages (from cffi>=1.12->cryptography>=36.0.0->pdfminer.six==20251107->pdfplumber>=0.11.4->crewai) (2.21)
+Collecting cfgv>=2.0.0 (from pre-commit>=4.3.0->instructor>=1.3.3->crewai)
+  Using cached cfgv-3.4.0-py2.py3-none-any.whl.metadata (8.5 kB)
+Collecting identify>=1.0.0 (from pre-commit>=4.3.0->instructor>=1.3.3->crewai)
+  Downloading identify-2.6.15-py2.py3-none-any.whl.metadata (4.4 kB)
+Collecting nodeenv>=0.11.1 (from pre-commit>=4.3.0->instructor>=1.3.3->crewai)
+  Using cached nodeenv-1.9.1-py2.py3-none-any.whl.metadata (21 kB)
+Collecting virtualenv>=20.10.0 (from pre-commit>=4.3.0->instructor>=1.3.3->crewai)
+  Downloading virtualenv-20.35.4-py3-none-any.whl.metadata (4.6 kB)
+Requirement already satisfied: lxml>=3.1.0 in /home/arnab/anaconda3/lib/python3.13/site-packages (from python-docx>=1.2.0->crewai-tools) (5.3.0)
+Requirement already satisfied: huggingface-hub<2.0,>=0.16.4 in /home/arnab/anaconda3/lib/python3.13/site-packages (from tokenizers>=0.20.3->crewai) (1.0.1)
+Requirement already satisfied: filelock in /home/arnab/anaconda3/lib/python3.13/site-packages (from huggingface-hub<2.0,>=0.16.4->tokenizers>=0.20.3->crewai) (3.17.0)
+Requirement already satisfied: fsspec>=2023.5.0 in /home/arnab/anaconda3/lib/python3.13/site-packages (from huggingface-hub<2.0,>=0.16.4->tokenizers>=0.20.3->crewai) (2025.3.2)
+Requirement already satisfied: shellingham in /home/arnab/anaconda3/lib/python3.13/site-packages (from huggingface-hub<2.0,>=0.16.4->tokenizers>=0.20.3->crewai) (1.5.0)
+Requirement already satisfied: typer-slim in /home/arnab/anaconda3/lib/python3.13/site-packages (from huggingface-hub<2.0,>=0.16.4->tokenizers>=0.20.3->crewai) (0.20.0)
+Requirement already satisfied: hf-xet<2.0.0,>=1.2.0 in /home/arnab/anaconda3/lib/python3.13/site-packages (from huggingface-hub<2.0,>=0.16.4->tokenizers>=0.20.3->crewai) (1.2.0)
+Requirement already satisfied: httptools>=0.6.3 in /home/arnab/anaconda3/lib/python3.13/site-packages (from uvicorn[standard]>=0.18.3->chromadb~=1.1.0->crewai) (0.7.1)
+Requirement already satisfied: uvloop>=0.15.1 in /home/arnab/anaconda3/lib/python3.13/site-packages (from uvicorn[standard]>=0.18.3->chromadb~=1.1.0->crewai) (0.22.1)
+Requirement already satisfied: watchfiles>=0.13 in /home/arnab/anaconda3/lib/python3.13/site-packages (from uvicorn[standard]>=0.18.3->chromadb~=1.1.0->crewai) (1.1.1)
+Requirement already satisfied: websockets>=10.4 in /home/arnab/anaconda3/lib/python3.13/site-packages (from uvicorn[standard]>=0.18.3->chromadb~=1.1.0->crewai) (15.0.1)
+Collecting distlib<1,>=0.3.7 (from virtualenv>=20.10.0->pre-commit>=4.3.0->instructor>=1.3.3->crewai)
+  Using cached distlib-0.4.0-py2.py3-none-any.whl.metadata (5.2 kB)
+Requirement already satisfied: platformdirs<5,>=3.9.1 in /home/arnab/anaconda3/lib/python3.13/site-packages (from virtualenv>=20.10.0->pre-commit>=4.3.0->instructor>=1.3.3->crewai) (4.3.7)
+Requirement already satisfied: defusedxml<0.8.0,>=0.7.1 in /home/arnab/anaconda3/lib/python3.13/site-packages (from youtube-transcript-api>=1.2.2->crewai-tools) (0.7.1)
+Collecting humanfriendly>=9.1 (from coloredlogs->onnxruntime>=1.14.1->chromadb~=1.1.0->crewai)
+  Using cached humanfriendly-10.0-py2.py3-none-any.whl.metadata (9.2 kB)
+Collecting oauthlib>=3.0.0 (from requests-oauthlib->kubernetes>=28.1.0->chromadb~=1.1.0->crewai)
+  Using cached oauthlib-3.3.1-py3-none-any.whl.metadata (7.9 kB)
+Requirement already satisfied: mpmath<1.4,>=1.1.0 in /home/arnab/anaconda3/lib/python3.13/site-packages (from sympy->onnxruntime>=1.14.1->chromadb~=1.1.0->crewai) (1.3.0)
+Downloading crewai-1.5.0-py3-none-any.whl (631 kB)
+   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 631.5/631.5 kB 14.4 MB/s eta 0:00:00
+Downloading json_repair-0.25.2-py3-none-any.whl (12 kB)
+Downloading portalocker-2.7.0-py2.py3-none-any.whl (15 kB)
+Downloading chromadb-1.1.1-cp39-abi3-manylinux_2_17_x86_64.manylinux2014_x86_64.whl (19.9 MB)
+   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 19.9/19.9 MB 3.8 MB/s eta 0:00:00
+Downloading posthog-5.4.0-py3-none-any.whl (105 kB)
+Downloading crewai_tools-1.5.0-py3-none-any.whl (755 kB)
+   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 755.1/755.1 kB 5.6 MB/s eta 0:00:00
+Downloading backoff-2.2.1-py3-none-any.whl (15 kB)
+Using cached beautifulsoup4-4.14.2-py3-none-any.whl (106 kB)
+Using cached build-1.3.0-py3-none-any.whl (23 kB)
+Downloading docker-7.1.0-py3-none-any.whl (147 kB)
+Downloading instructor-1.13.0-py3-none-any.whl (160 kB)
+Downloading diskcache-5.6.3-py3-none-any.whl (45 kB)
+Using cached json5-0.12.1-py3-none-any.whl (36 kB)
+Downloading jsonref-1.1.0-py3-none-any.whl (9.4 kB)
+Downloading kubernetes-34.1.0-py2.py3-none-any.whl (2.0 MB)
+   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 2.0/2.0 MB 5.1 MB/s eta 0:00:00
+Downloading durationpy-0.10-py3-none-any.whl (3.9 kB)
+Downloading lancedb-0.25.3-cp39-abi3-manylinux_2_28_x86_64.whl (39.2 MB)
+   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 39.2/39.2 MB 3.8 MB/s eta 0:00:00
+Downloading lance_namespace-0.0.21-py3-none-any.whl (25 kB)
+Downloading mcp-1.21.2-py3-none-any.whl (174 kB)
+Downloading mmh3-5.2.0-cp313-cp313-manylinux1_x86_64.manylinux_2_28_x86_64.manylinux_2_5_x86_64.whl (103 kB)
+Downloading onnxruntime-1.23.2-cp313-cp313-manylinux_2_27_x86_64.manylinux_2_28_x86_64.whl (17.4 MB)
+   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 17.4/17.4 MB 3.9 MB/s eta 0:00:00
+Downloading opentelemetry_exporter_otlp_proto_grpc-1.38.0-py3-none-any.whl (19 kB)
+Downloading opentelemetry_exporter_otlp_proto_common-1.38.0-py3-none-any.whl (18 kB)
+Downloading opentelemetry_proto-1.38.0-py3-none-any.whl (72 kB)
+Downloading opentelemetry_sdk-1.38.0-py3-none-any.whl (132 kB)
+Downloading opentelemetry_api-1.38.0-py3-none-any.whl (65 kB)
+Downloading opentelemetry_semantic_conventions-0.59b0-py3-none-any.whl (207 kB)
+Downloading opentelemetry_exporter_otlp_proto_http-1.38.0-py3-none-any.whl (19 kB)
+Downloading pre_commit-4.4.0-py2.py3-none-any.whl (226 kB)
+Using cached cfgv-3.4.0-py2.py3-none-any.whl (7.2 kB)
+Downloading identify-2.6.15-py2.py3-none-any.whl (99 kB)
+Using cached nodeenv-1.9.1-py2.py3-none-any.whl (22 kB)
+Downloading pybase64-1.4.2-cp313-cp313-manylinux1_x86_64.manylinux2014_x86_64.manylinux_2_17_x86_64.manylinux_2_5_x86_64.whl (71 kB)
+Downloading pydantic_settings-2.12.0-py3-none-any.whl (51 kB)
+Downloading pylance-0.39.0-cp39-abi3-manylinux_2_28_x86_64.whl (48.6 MB)
+   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 48.6/48.6 MB 3.8 MB/s eta 0:00:00
+Downloading pypdf-6.3.0-py3-none-any.whl (328 kB)
+Downloading python_docx-1.2.0-py3-none-any.whl (252 kB)
+Downloading python_dotenv-1.2.1-py3-none-any.whl (21 kB)
+Downloading tomli-2.3.0-cp313-cp313-manylinux2014_x86_64.manylinux_2_17_x86_64.manylinux_2_28_x86_64.whl (248 kB)
+Downloading tomli_w-1.2.0-py3-none-any.whl (6.7 kB)
+Downloading ty-0.0.1a26-py3-none-manylinux_2_17_x86_64.manylinux2014_x86_64.whl (9.3 MB)
+   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 9.3/9.3 MB 4.1 MB/s eta 0:00:00
+Downloading uv-0.9.10-py3-none-manylinux_2_17_x86_64.manylinux2014_x86_64.whl (21.4 MB)
+   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 21.4/21.4 MB 3.8 MB/s eta 0:00:00
+Downloading virtualenv-20.35.4-py3-none-any.whl (6.0 MB)
+   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 6.0/6.0 MB 4.0 MB/s eta 0:00:00
+Using cached distlib-0.4.0-py2.py3-none-any.whl (469 kB)
+Downloading youtube_transcript_api-1.2.3-py3-none-any.whl (485 kB)
+Using cached coloredlogs-15.0.1-py2.py3-none-any.whl (46 kB)
+Using cached humanfriendly-10.0-py2.py3-none-any.whl (86 kB)
+Downloading deprecation-2.1.0-py2.py3-none-any.whl (11 kB)
+Downloading flatbuffers-25.9.23-py2.py3-none-any.whl (30 kB)
+Using cached importlib_resources-6.5.2-py3-none-any.whl (37 kB)
+Downloading lance_namespace_urllib3_client-0.0.21-py3-none-any.whl (229 kB)
+Using cached pyproject_hooks-1.2.0-py3-none-any.whl (10 kB)
+Using cached requests_oauthlib-2.0.0-py2.py3-none-any.whl (24 kB)
+Using cached oauthlib-3.3.1-py3-none-any.whl (160 kB)
+Building wheels for collected packages: pypika
+  Building wheel for pypika (pyproject.toml): started
+  Building wheel for pypika (pyproject.toml): finished with status 'done'
+  Created wheel for pypika: filename=pypika-0.48.9-py2.py3-none-any.whl size=53803 sha256=d866e6b0e20654b78ee0ec971829ede0c2452faa2a58b196f5025f8c712112d6
+  Stored in directory: /home/arnab/.cache/pip/wheels/b4/f8/a5/28e9c1524d320f4b8eefdce0e487b5c2e128dbf2ed1bb4a60b
+Successfully built pypika
+Installing collected packages: pypika, flatbuffers, durationpy, distlib, virtualenv, uv, ty, tomli-w, tomli, python-dotenv, python-docx, pyproject_hooks, pypdf, pybase64, portalocker, opentelemetry-proto, oauthlib, nodeenv, mmh3, jsonref, json5, json-repair, importlib-resources, identify, humanfriendly, diskcache, deprecation, cfgv, beautifulsoup4, backoff, youtube-transcript-api, requests-oauthlib, pre-commit, posthog, opentelemetry-exporter-otlp-proto-common, opentelemetry-api, docker, coloredlogs, build, pydantic-settings, opentelemetry-semantic-conventions, onnxruntime, lance-namespace-urllib3-client, kubernetes, opentelemetry-sdk, mcp, instructor, opentelemetry-exporter-otlp-proto-http, opentelemetry-exporter-otlp-proto-grpc, chromadb, crewai, pylance, lance-namespace, lancedb, crewai-tools
+  Attempting uninstall: tomli
+    Found existing installation: tomli 2.0.1
+    Uninstalling tomli-2.0.1:
+      Successfully uninstalled tomli-2.0.1
+  Attempting uninstall: python-dotenv
+    Found existing installation: python-dotenv 1.0.0
+    Uninstalling python-dotenv-1.0.0:
+      Successfully uninstalled python-dotenv-1.0.0
+  Attempting uninstall: opentelemetry-proto
+    Found existing installation: opentelemetry-proto 1.37.0
+    Uninstalling opentelemetry-proto-1.37.0:
+      Successfully uninstalled opentelemetry-proto-1.37.0
+  Attempting uninstall: json5
+    Found existing installation: json5 0.9.25
+    Uninstalling json5-0.9.25:
+      Successfully uninstalled json5-0.9.25
+  Attempting uninstall: beautifulsoup4
+    Found existing installation: beautifulsoup4 4.12.3
+    Uninstalling beautifulsoup4-4.12.3:
+      Successfully uninstalled beautifulsoup4-4.12.3
+  Attempting uninstall: opentelemetry-exporter-otlp-proto-common
+    Found existing installation: opentelemetry-exporter-otlp-proto-common 1.37.0
+    Uninstalling opentelemetry-exporter-otlp-proto-common-1.37.0:
+      Successfully uninstalled opentelemetry-exporter-otlp-proto-common-1.37.0
+  Attempting uninstall: opentelemetry-api
+    Found existing installation: opentelemetry-api 1.37.0
+    Uninstalling opentelemetry-api-1.37.0:
+      Successfully uninstalled opentelemetry-api-1.37.0
+  Attempting uninstall: pydantic-settings
+    Found existing installation: pydantic-settings 2.6.1
+    Uninstalling pydantic-settings-2.6.1:
+      Successfully uninstalled pydantic-settings-2.6.1
+  Attempting uninstall: opentelemetry-semantic-conventions
+    Found existing installation: opentelemetry-semantic-conventions 0.58b0
+    Uninstalling opentelemetry-semantic-conventions-0.58b0:
+      Successfully uninstalled opentelemetry-semantic-conventions-0.58b0
+  Attempting uninstall: opentelemetry-sdk
+    Found existing installation: opentelemetry-sdk 1.37.0
+    Uninstalling opentelemetry-sdk-1.37.0:
+      Successfully uninstalled opentelemetry-sdk-1.37.0
+  Attempting uninstall: mcp
+    Found existing installation: mcp 1.14.1
+    Uninstalling mcp-1.14.1:
+      Successfully uninstalled mcp-1.14.1
+  Attempting uninstall: opentelemetry-exporter-otlp-proto-http
+    Found existing installation: opentelemetry-exporter-otlp-proto-http 1.37.0
+    Uninstalling opentelemetry-exporter-otlp-proto-http-1.37.0:
+      Successfully uninstalled opentelemetry-exporter-otlp-proto-http-1.37.0
+
+Successfully installed backoff-2.2.1 beautifulsoup4-4.14.2 build-1.3.0 cfgv-3.4.0 chromadb-1.1.1 coloredlogs-15.0.1 crewai-1.5.0 crewai-tools-1.5.0 deprecation-2.1.0 diskcache-5.6.3 distlib-0.4.0 docker-7.1.0 durationpy-0.10 flatbuffers-25.9.23 humanfriendly-10.0 identify-2.6.15 importlib-resources-6.5.2 instructor-1.13.0 json-repair-0.25.2 json5-0.12.1 jsonref-1.1.0 kubernetes-34.1.0 lance-namespace-0.0.21 lance-namespace-urllib3-client-0.0.21 lancedb-0.25.3 mcp-1.21.2 mmh3-5.2.0 nodeenv-1.9.1 oauthlib-3.3.1 onnxruntime-1.23.2 opentelemetry-api-1.38.0 opentelemetry-exporter-otlp-proto-common-1.38.0 opentelemetry-exporter-otlp-proto-grpc-1.38.0 opentelemetry-exporter-otlp-proto-http-1.38.0 opentelemetry-proto-1.38.0 opentelemetry-sdk-1.38.0 opentelemetry-semantic-conventions-0.59b0 portalocker-2.7.0 posthog-5.4.0 pre-commit-4.4.0 pybase64-1.4.2 pydantic-settings-2.12.0 pylance-0.39.0 pypdf-6.3.0 pypika-0.48.9 pyproject_hooks-1.2.0 python-docx-1.2.0 python-dotenv-1.2.1 requests-oauthlib-2.0.0 tomli-2.3.0 tomli-w-1.2.0 ty-0.0.1a26 uv-0.9.10 virtualenv-20.35.4 youtube-transcript-api-1.2.3

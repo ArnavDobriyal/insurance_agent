@@ -1,0 +1,27 @@
+# CrewAI Backend Dependencies
+
+# Core Backend Dependencies
+fastapi==0.121.2
+uvicorn==0.38.0
+python-dotenv==1.0.0
+python-multipart==0.0.12
+
+# CrewAI Framework (Python 3.13 compatible)
+crewai>=1.0.0
+crewai-tools>=0.17.0
+
+# AI & LangChain (for CrewAI compatibility)
+langchain==1.0.3
+langchain-core==1.0.2
+langchain-google-genai==3.0.3
+
+# Data Processing
+pydantic==2.12.4
+pydantic_core==2.41.5
+
+# CORS Support
+flask-cors==6.0.1
+
+# Additional CrewAI dependencies
+instructor==1.6.4
+litellm==1.55.10

@@ -1,0 +1,42 @@
+[
+  {
+    "id": 1,
+    "productName": "LIC's Bima Lakshmi",
+    "uinNo": "512N389V01",
+    "policyWording": "https://licindia.in/documents/20121/1385382/Policy+Document_LIC%27s+Bima+Lakshmi.pdf/82e18b47-8b8b-544f-326d-5fe61243173c?t=1760526795170",
+    "insurancePlan": "Insurance plan",
+    "category": "Endowment plans"
+  },
+  {
+    "id": 2,
+    "productName": "LIC's Jeevan Umang",
+    "uinNo": "512N312V03",
+    "policyWording": "https://licindia.in/documents/20121/1240315/Policy_doc_Jeevan_Umang_290924-withlogo.pdf/5f44c0f9-821e-0a98-afb6-51b343ae71e9?t=1727867404715",
+    "insurancePlan": "Insurance plan",
+    "category": "Whole life plans"
+  },
+  {
+    "id": 3,
+    "productName": "LIC's Bima Ratna",
+    "uinNo": "512N345V02",
+    "policyWording": "https://licindia.in/documents/20121/1307964/Policy+Document+Modified+LIC%27s+Bima+Ratna.pdf/f226fbd1-f32f-1407-6fc1-f38c83974f2b?t=1735734237188",
+    "insurancePlan": "Insurance plan",
+    "category": "Money back plans"
+  },
+  {
+    "id": 4,
+    "productName": "LIC's Digi Term",
+    "uinNo": "512N356V02",
+    "policyWording": "https://licindia.in/documents/20121/1243736/Policy+Document_LIC%27s_Digi+Term_V02.pdf/0797393b-4ddf-ac11-6cf2-a0fdea86d82c?t=1732264538490",
+    "insurancePlan": "Insurance plan",
+    "category": "Term insurance"
+  },
+  {
+    "id": 5,
+    "productName": "LIC's Digi Credit Life",
+    "uinNo": "512N358V01",
+    "policyWording": "https://licindia.in/documents/20121/1243736/Policy+Document_Digi+Credit+Life_CC.pdf/e41289c6-019a-c17f-081e-469d0f93394e?t=1728050234197",
+    "insurancePlan": "Insurance plan",
+    "category": "Term insurance"
+  }
+]

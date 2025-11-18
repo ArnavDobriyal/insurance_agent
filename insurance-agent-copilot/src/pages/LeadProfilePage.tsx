@@ -1,17 +1,20 @@
 import { useState } from 'react';
 import { useNavigate, useParams } from 'react-router-dom';
-import { ArrowLeft, Phone, MessageCircle, Mail, MapPin, Calendar, Tag } from 'lucide-react';
+import { ArrowLeft, Phone, MessageCircle, Mail, MapPin, Calendar, Tag, Zap, Users, IndianRupee, TrendingUp, Clock, Target } from 'lucide-react';
 import { motion } from 'framer-motion';
 import SentimentGraph from '../components/SentimentGraph';
 import ConversionGauge from '../components/ConversionGauge';
+import CommunicationHub from '../components/CommunicationHub';
+import CallPopup from '../components/CallPopup';
 import BottomNavigation from '../components/BottomNavigation';
-import leadsData from '../data/mock/leads.json';
+import leadsData from '../data/mock/leads_enhanced.json';
 import interactionsData from '../data/mock/interactions.json';
 
 export default function LeadProfilePage() {
   const navigate = useNavigate();
   const { id } = useParams();
   const [activeTab, setActiveTab] = useState<'timeline' | 'insights'>('timeline');
+  const [showCallPopup, setShowCallPopup] = useState(false);
 
   const lead = leadsData.find(l => l.id === id);
   const leadInteractions = interactionsData.filter(i => i.leadId === id);
@@ -106,33 +109,77 @@ export default function LeadProfilePage() {
             <div className="lg:col-span-2 space-y-4">
               {/* Quick Actions */}
               <div className="glass-effect rounded-xl p-3">
-                <div className="grid grid-cols-4 gap-2">
-                  <button className="flex flex-col items-center gap-1.5 p-2 rounded-xl hover:bg-dark-hover transition-colors">
+                <div className="grid grid-cols-5 gap-2">
+                  <button 
+                    onClick={() => setShowCallPopup(true)}
+                    className="flex flex-col items-center gap-1.5 p-2 rounded-xl hover:bg-dark-hover transition-colors"
+                  >
                     <div className="w-10 h-10 rounded-full bg-semantic-success/20 flex items-center justify-center">
                       <Phone className="w-5 h-5 text-semantic-success" />
                     </div>
                     <span className="text-[10px] text-gray-400">Call</span>
                   </button>
-                  <button className="flex flex-col items-center gap-1.5 p-2 rounded-xl hover:bg-dark-hover transition-colors">
-                    <div className="w-10 h-10 rounded-full bg-primary/20 flex items-center justify-center">
-                      <MessageCircle className="w-5 h-5 text-primary" />
+                  <button 
+                    onClick={() => {
+                      const commHub = document.querySelector('[data-communication-hub]');
+                      if (commHub) {
+                        commHub.scrollIntoView({ behavior: 'smooth', block: 'center' });
+                      }
+                    }}
+                    className="flex flex-col items-center gap-1.5 p-2 rounded-xl hover:bg-dark-hover transition-colors"
+                  >
+                    <div className="w-10 h-10 rounded-full bg-green-500/20 flex items-center justify-center">
+                      <MessageCircle className="w-5 h-5 text-green-400" />
                     </div>
                     <span className="text-[10px] text-gray-400">WhatsApp</span>
                   </button>
-                  <button className="flex flex-col items-center gap-1.5 p-2 rounded-xl hover:bg-dark-hover transition-colors">
+                  <button 
+                    onClick={() => {
+                      const commHub = document.querySelector('[data-communication-hub]');
+                      if (commHub) {
+                        commHub.scrollIntoView({ behavior: 'smooth', block: 'center' });
+                      }
+                    }}
+                    className="flex flex-col items-center gap-1.5 p-2 rounded-xl hover:bg-dark-hover transition-colors"
+                  >
                     <div className="w-10 h-10 rounded-full bg-semantic-info/20 flex items-center justify-center">
                       <Mail className="w-5 h-5 text-semantic-info" />
                     </div>
                     <span className="text-[10px] text-gray-400">Email</span>
                   </button>
                   <button 
-                    onClick={() => window.open(`https://www.google.com/maps/search/?api=1&query=${lead.lat},${lead.lng}`, '_blank')}
+                    onClick={() => {
+                      const address = encodeURIComponent(lead.address || lead.location || '');
+                      window.open(`https://www.google.com/maps/search/?api=1&query=${address}`, '_blank');
+                    }}
                     className="flex flex-col items-center gap-1.5 p-2 rounded-xl hover:bg-dark-hover transition-colors"
                   >
-                    <div className="w-10 h-10 rounded-full bg-semantic-warning/20 flex items-center justify-center">
-                      <MapPin className="w-5 h-5 text-semantic-warning" />
+                    <div className="w-10 h-10 rounded-full bg-orange-500/20 flex items-center justify-center">
+                      <MapPin className="w-5 h-5 text-orange-400" />
                     </div>
                     <span className="text-[10px] text-gray-400">Map</span>
+                  </button>
+                  <button 
+                    onClick={() => {
+                      navigate(`/ai?action=analyze&leadId=${lead.id}&leadName=${encodeURIComponent(lead.name)}&leadInfo=${encodeURIComponent(JSON.stringify({
+                        age: lead.age,
+                        location: lead.location,
+                        productInterest: lead.productInterest,
+                        temperature: lead.temperature,
+                        lastInteraction: lead.lastInteractionSummary,
+                        conversionProbability: lead.conversionProbability,
+                        aiPriority: (lead as any).aiPriority,
+                        sentiment: (lead as any).sentiment,
+                        enrichment: (lead as any).enrichment,
+                        engagement: (lead as any).engagement
+                      }))}`);
+                    }}
+                    className="flex flex-col items-center gap-1.5 p-2 rounded-xl hover:bg-dark-hover transition-colors"
+                  >
+                    <div className="w-10 h-10 rounded-full bg-purple-500/20 flex items-center justify-center">
+                      <Zap className="w-5 h-5 text-purple-400" />
+                    </div>
+                    <span className="text-[10px] text-gray-400">AI</span>
                   </button>
                 </div>
               </div>
@@ -154,8 +201,8 @@ export default function LeadProfilePage() {
                     <div className="text-primary-content text-xs truncate">{lead.email}</div>
                   </div>
                   <div>
-                    <div className="text-[10px] text-secondary-content mb-0.5">Premium</div>
-                    <div className="text-primary-content text-sm">₹{lead.premium.toLocaleString()}</div>
+                    <div className="text-[10px] text-secondary-content mb-0.5">Source</div>
+                    <div className="text-primary-content text-sm">{(lead as any).enrichment?.source || 'Unknown'}</div>
                   </div>
                 </div>
 
@@ -185,6 +232,207 @@ export default function LeadProfilePage() {
                     </div>
                   </div>
                 )}
+              </div>
+
+              {/* AI Suggestions - Detailed */}
+              {(lead as any).aiSuggestions && (
+                <div className="glass-effect rounded-xl p-4">
+                  <div className="flex items-center gap-2 mb-3">
+                    <Zap className="w-4 h-4 text-primary" />
+                    <h3 className="text-primary-content font-medium text-sm">AI Recommendations</h3>
+                  </div>
+                  
+                  {/* Next Best Action */}
+                  <div className="bg-primary/10 rounded-lg p-3 mb-3">
+                    <div className="flex items-center gap-2 mb-2">
+                      <Target className="w-4 h-4 text-primary" />
+                      <span className="text-primary font-medium text-xs">Next Best Action</span>
+                      <span className="text-xs text-secondary-content">
+                        ({Math.round((lead as any).aiSuggestions.nextBestAction.confidence * 100)}% confidence)
+                      </span>
+                    </div>
+                    <div className="text-xs text-primary-content mb-2">
+                      <strong>Action:</strong> {(lead as any).aiSuggestions.nextBestAction.action.toUpperCase()} - {(lead as any).aiSuggestions.nextBestAction.timing}
+                    </div>
+                    <div className="text-xs text-secondary-content">
+                      <strong>Reasoning:</strong> {(lead as any).aiSuggestions.nextBestAction.reasoning}
+                    </div>
+                    {(lead as any).aiSuggestions.nextBestAction.messageTemplate && (
+                      <div className="mt-2 p-2 bg-dark-hover rounded text-xs text-secondary-content">
+                        <strong>Suggested Message:</strong><br />
+                        "{(lead as any).aiSuggestions.nextBestAction.messageTemplate}"
+                      </div>
+                    )}
+                  </div>
+
+                  {/* AI Priority Reasoning */}
+                  {(lead as any).aiPriority && (
+                    <div className="space-y-2">
+                      <div className="flex items-center justify-between">
+                        <span className="text-xs text-secondary-content">AI Priority Score</span>
+                        <span className="text-sm font-bold text-primary">{(lead as any).aiPriority.score}/100</span>
+                      </div>
+                      <div className="text-xs text-secondary-content">
+                        <strong>Why this score:</strong>
+                        <ul className="mt-1 space-y-1">
+                          {(lead as any).aiPriority.reasoning.map((reason: string, index: number) => (
+                            <li key={index} className="flex items-start gap-2">
+                              <span className="text-primary">•</span>
+                              <span>{reason}</span>
+                            </li>
+                          ))}
+                        </ul>
+                      </div>
+                    </div>
+                  )}
+                </div>
+              )}
+
+              {/* Possible Likely Production */}
+              <div className="glass-effect rounded-xl p-4">
+                <h3 className="text-primary-content font-medium mb-3 text-sm">Possible Likely Production</h3>
+                
+                {/* Current Product Interests */}
+                <div className="mb-4">
+                  <div className="text-xs text-secondary-content mb-2">Current Interests</div>
+                  <div className="flex flex-wrap gap-2">
+                    {lead.productInterest && lead.productInterest.length > 0 ? (
+                      lead.productInterest.map((product: string, index: number) => (
+                        <span
+                          key={index}
+                          className="px-3 py-1 bg-primary/20 text-primary rounded-full text-xs"
+                        >
+                          {product}
+                        </span>
+                      ))
+                    ) : (
+                      <span className="text-xs text-gray-500">No products assigned</span>
+                    )}
+                  </div>
+                </div>
+
+                {/* Product Assignment Dropdown */}
+                <div className="mb-4">
+                  <label className="text-xs text-secondary-content mb-2 block">Assign Products</label>
+                  <select className="w-full glass-effect rounded-lg px-3 py-2 text-xs text-primary-content outline-none focus:ring-2 focus:ring-primary/50">
+                    <option value="">Select a product to assign...</option>
+                    <optgroup label="Endowment Plans">
+                      <option value="LIC's Bima Lakshmi">LIC's Bima Lakshmi (512N389V01)</option>
+                    </optgroup>
+                    <optgroup label="Whole Life Plans">
+                      <option value="LIC's Jeevan Umang">LIC's Jeevan Umang (512N312V03)</option>
+                    </optgroup>
+                    <optgroup label="Money Back Plans">
+                      <option value="LIC's Bima Ratna">LIC's Bima Ratna (512N345V02)</option>
+                    </optgroup>
+                    <optgroup label="Term Insurance">
+                      <option value="LIC's Digi Term">LIC's Digi Term (512N356V02)</option>
+                      <option value="LIC's Digi Credit Life">LIC's Digi Credit Life (512N358V01)</option>
+                    </optgroup>
+                  </select>
+                </div>
+
+                {/* Key Attributes Grid */}
+                {(lead as any).enrichment && (
+                  <div className="grid grid-cols-2 gap-3 pt-3 border-t border-dark-border">
+                    <div>
+                      <div className="text-[10px] text-secondary-content mb-0.5">Income</div>
+                      <div className="text-primary-content text-sm">₹{((lead as any).enrichment.income / 100000).toFixed(1)}L</div>
+                    </div>
+                    <div>
+                      <div className="text-[10px] text-secondary-content mb-0.5">Dependents</div>
+                      <div className="text-primary-content text-sm">{(lead as any).enrichment.dependents}</div>
+                    </div>
+                    <div>
+                      <div className="text-[10px] text-secondary-content mb-0.5">Age</div>
+                      <div className="text-primary-content text-sm">{lead.age} years</div>
+                    </div>
+                    <div>
+                      <div className="text-[10px] text-secondary-content mb-0.5">Source</div>
+                      <div className="text-primary-content text-sm">{(lead as any).enrichment?.source || 'Unknown'}</div>
+                    </div>
+                    <div>
+                      <div className="text-[10px] text-secondary-content mb-0.5">Prior Policies</div>
+                      <div className="text-primary-content text-sm">{(lead as any).enrichment?.existingPolicies?.length || 0}</div>
+                    </div>
+                    <div>
+                      <div className="text-[10px] text-secondary-content mb-0.5">Last Touch Point</div>
+                      <div className="text-primary-content text-sm">{formatDate(lead.lastInteractionDate).split(',')[0]}</div>
+                    </div>
+                  </div>
+                )}
+              </div>
+
+              {/* Financial Profile */}
+              {(lead as any).enrichment && (
+                <div className="glass-effect rounded-xl p-4">
+                  <h3 className="text-primary-content font-medium mb-3 text-sm">Financial Profile</h3>
+                  <div className="grid grid-cols-2 gap-4">
+                    <div className="flex items-center gap-2">
+                      <IndianRupee className="w-4 h-4 text-green-400" />
+                      <div>
+                        <div className="text-xs text-secondary-content">Annual Income</div>
+                        <div className="text-sm font-medium text-primary-content">
+                          ₹{((lead as any).enrichment.income / 100000).toFixed(1)}L
+                        </div>
+                      </div>
+                    </div>
+                    <div className="flex items-center gap-2">
+                      <Users className="w-4 h-4 text-blue-400" />
+                      <div>
+                        <div className="text-xs text-secondary-content">Dependents</div>
+                        <div className="text-sm font-medium text-primary-content">
+                          {(lead as any).enrichment.dependents}
+                        </div>
+                      </div>
+                    </div>
+                    <div className="flex items-center gap-2">
+                      <TrendingUp className="w-4 h-4 text-purple-400" />
+                      <div>
+                        <div className="text-xs text-secondary-content">Risk Profile</div>
+                        <div className="text-sm font-medium text-primary-content capitalize">
+                          {(lead as any).enrichment.riskProfile}
+                        </div>
+                      </div>
+                    </div>
+                    <div className="flex items-center gap-2">
+                      <Tag className="w-4 h-4 text-orange-400" />
+                      <div>
+                        <div className="text-xs text-secondary-content">Source</div>
+                        <div className="text-sm font-medium text-primary-content">
+                          {(lead as any).enrichment.source}
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  
+                  {/* Product Interest */}
+                  {(lead as any).productInterest && (lead as any).productInterest.length > 0 && (
+                    <div className="mt-4 pt-3 border-t border-dark-border">
+                      <div className="text-xs text-secondary-content mb-2">Products of Interest</div>
+                      <div className="flex flex-wrap gap-2">
+                        {(lead as any).productInterest.map((product: string, index: number) => (
+                          <span
+                            key={index}
+                            className="px-3 py-1 bg-primary/20 text-primary rounded-full text-xs"
+                          >
+                            {product}
+                          </span>
+                        ))}
+                      </div>
+                    </div>
+                  )}
+                </div>
+              )}
+
+              {/* Communication Hub */}
+              <div data-communication-hub>
+                <CommunicationHub
+                  leadName={lead.name}
+                  leadPhone={lead.phone}
+                  leadEmail={lead.email}
+                  aiSuggestion={(lead as any).aiSuggestions?.nextBestAction}
+                />
               </div>
 
               {/* Last Interaction Summary */}
@@ -305,6 +553,15 @@ export default function LeadProfilePage() {
           </div>
         </div>
       </div>
+
+      {/* Call Popup */}
+      <CallPopup
+        isOpen={showCallPopup}
+        onClose={() => setShowCallPopup(false)}
+        leadName={lead.name}
+        leadPhone={lead.phone || ''}
+        nextBestAction={(lead as any).aiSuggestions?.nextBestAction}
+      />
 
       {/* Bottom Navigation */}
       <BottomNavigation notificationCount={3} />
